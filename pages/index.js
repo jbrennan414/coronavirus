@@ -1,25 +1,8 @@
-import { useState, useEffect } from 'react';
-
-
-function useStats(){
-    const [stats, setStats] = useState();
-    useEffect(()=> {
-        console.log("Fetching Data")
-        async function fetchData(){
-            const data = await fetch('https://covid19.mathdro.id/api').then(res => 
-                res.json()
-            );
-            setStats(data);
-        }
-        fetchData();
-    }, []);
-
-    return stats;
-}
+import useStats from '../utils/useStats';
 
 function Stats(){
 
-    const stats = useStats();
+    const stats = useStats("https://covid19.mathdro.id/api");
     if (!stats){return <p>Loading...</p>}
     console.log(stats)
     return (
