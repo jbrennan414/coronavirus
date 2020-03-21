@@ -4,8 +4,9 @@ import CountrySelector from '../components/CountrySelector';
 export default function IndexPage(){
     return (
         <div>
-            <Stats></Stats>
-            <CountrySelector></CountrySelector>
+            <Stats url={"https://covid19.mathdro.id/api"}></Stats>
+            <CountrySelector url={"https://covid19.mathdro.id/api/countries"}></CountrySelector>
+
         </div>
     )
 }
