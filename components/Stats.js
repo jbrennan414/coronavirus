@@ -17,6 +17,10 @@ const StatBlock = styled.div`
   text-align: center;
 `;
 
+function parseNumber(value){
+  return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 export default function Stats({ url }) {
   const { stats, loading, error } = useStats(url);
   console.log(stats, loading, error);
@@ -26,15 +30,15 @@ export default function Stats({ url }) {
     <StatGrid>
       <StatBlock>
         <h3>Confirmed:</h3>
-        <span>{stats && stats.confirmed ? stats.confirmed.value : "0"}</span>
+        <span>{stats && stats.confirmed && stats.confirmed.value ? parseNumber(stats.confirmed.value) : "0"}</span>
       </StatBlock>
       <StatBlock>
         <h3>Deaths:</h3>
-        <span>{stats && stats.deaths ? stats.deaths.value : "0"}</span>
+        <span>{stats && stats.deaths && stats.deaths.value ? parseNumber(stats.deaths.value) : "0"}</span>
       </StatBlock>
       <StatBlock>
         <h3>Recovered:</h3>
-        <span>{stats && stats.recovered ? stats.recovered.value : "0"}</span>
+        <span>{stats && stats.recovered && stats.recovered.value ? parseNumber(stats.recovered.value) : "0"}</span>
       </StatBlock>
     </StatGrid>
   );

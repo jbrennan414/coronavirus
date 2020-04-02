@@ -19,8 +19,6 @@ export default function CountrySelector() {
         }}
       >
         {Object.entries(countries.countries).map(([country, code]) => (
-          console.log("RRRRRR", countries.iso3[code]),
-          console.log("DDDDDD", code),
           <option
             selected={selectedCountry === countries.iso3[code]}
             key={code}
